@@ -14,6 +14,7 @@ namespace Sweet.Game.Preferences
 #elif !UNITY_EDITOR && UNITY_ANDROID
             _devicePreferences = new Sweet.Game.Preferences.Android.AndroidDevicePreferences();
 #else
+            _devicePreferences = new Sweet.Game.Preferences.Standalone.StandaloneDevicePreferences();
 #endif
         }
 
