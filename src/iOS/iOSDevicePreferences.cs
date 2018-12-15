@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Sweet.Preferences;
 using UnityEngine;
 
+#if !UNITY_EDITOR && UNITY_IOS
 namespace Sweet.Game.Preferences.iOS
 {
     public class iOSDevicePreferences : IDevicePreferences
@@ -29,3 +29,4 @@ namespace Sweet.Game.Preferences.iOS
         }
     }
 }
+#endif

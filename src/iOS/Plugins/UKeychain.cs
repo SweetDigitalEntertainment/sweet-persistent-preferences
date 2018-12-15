@@ -1,7 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Sweet.Preferences
+#if !UNITY_EDITOR && UNITY_IOS
+namespace Sweet.Game.Preferences.iOS
 {
     public static class UKeychain
     {
@@ -24,8 +25,6 @@ namespace Sweet.Preferences
         private static extern void _UKeychain_FreeAccountArray(IntPtr arr, int count);
 
 
-
-
         public static UKeychainAccount[] AllAccounts()
         {
             IntPtr arr;
@@ -33,14 +32,12 @@ namespace Sweet.Preferences
             return MarshalAndFreeAccounts(arr, count);
         }
 
-
         public static UKeychainAccount[] AccountsForService(string serviceName)
         {
             IntPtr arr;
             int count = (int)_UKeychain_AccountsForService(serviceName, out arr);
             return MarshalAndFreeAccounts(arr, count);
         }
-
 
         private static UKeychainAccount[] MarshalAndFreeAccounts(IntPtr arr, int count)
         {
@@ -63,25 +60,20 @@ namespace Sweet.Preferences
             return ret;
         }
 
-
         public static string PasswordForService(string serviceName, string account)
         {
             return _UKeychain_PasswordForService(serviceName, account);
         }
-
 
         public static bool DeletePasswordForService(string serviceName, string account)
         {
             return _UKeychain_DeletePasswordForService(serviceName, account) == 1;
         }
 
-
         public static bool SetPassword(string password, string serviceName, string account)
         {
             return _UKeychain_SetPassword(password, serviceName, account) == 1;
         }
-
-
 
 
         private struct UKeychainAccountNative
@@ -93,3 +85,4 @@ namespace Sweet.Preferences
         }
     }
 }
+#endif

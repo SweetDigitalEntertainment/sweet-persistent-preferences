@@ -5,18 +5,17 @@ namespace Sweet.Game.Preferences
         IDevicePreferences _devicePreferences;
 
 
-
-
         public DevicePreferences()
         {
-#if !UNITY_EDITOR && UNITY_IOS
-            _devicePreferences = new Sweet.Game.Preferences.iOS.iOSDevicePreferences();
-#elif !UNITY_EDITOR && UNITY_ANDROID
-            _devicePreferences = new Sweet.Game.Preferences.Android.AndroidDevicePreferences();
-#else
+#if UNITY_EDITOR || UNITY_STANDALONE
             _devicePreferences = new Sweet.Game.Preferences.Standalone.StandaloneDevicePreferences();
+#elif UNITY_IOS
+            _devicePreferences = new Sweet.Game.Preferences.iOS.iOSDevicePreferences();
+#elif UNITY_ANDROID
+            _devicePreferences = new Sweet.Game.Preferences.Android.AndroidDevicePreferences();
 #endif
         }
+
 
         public string GetValue(string key)
         {

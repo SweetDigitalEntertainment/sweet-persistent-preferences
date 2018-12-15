@@ -1,4 +1,5 @@
-namespace Sweet.Preferences
+#if !UNITY_EDITOR && UNITY_IOS
+namespace Sweet.Game.Preferences.iOS
 {
     public struct UKeychainAccount
     {
@@ -8,3 +9,4 @@ namespace Sweet.Preferences
         public string LastModified;
     }
 }
+#endif

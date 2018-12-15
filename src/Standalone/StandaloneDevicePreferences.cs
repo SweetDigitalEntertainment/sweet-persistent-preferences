@@ -1,5 +1,6 @@
 using UnityEngine;
 
+#if UNITY_EDITOR || UNITY_STANDALONE
 namespace Sweet.Game.Preferences.Standalone
 {
     public sealed class StandaloneDevicePreferences : IDevicePreferences
@@ -34,3 +35,4 @@ namespace Sweet.Game.Preferences.Standalone
         }
     }
 }
+#endif

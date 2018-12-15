@@ -8,12 +8,9 @@ namespace Sweet.Game.Preferences
     {
         bool HasKey(string key);
 
-
         void SetValue(string key, string value);
 
-
         string GetValue(string key);
-
 
         bool TryGetValue(string key, out string value);
     }
