@@ -2,31 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if !UNITY_EDITOR && UNITY_IOS
-namespace Sweet.Game.Preferences.iOS
+namespace Sweet.PersistentPreferences.Android
 {
-    public class iOSDevicePreferences : IDevicePreferences
+    public class AndroidPersistentPreferences : IPersistentPreferences
     {
         public string GetValue(string key)
         {
-            return UKeychain.PasswordForService("uPreferences", key);
+            throw new System.NotImplementedException();
         }
 
         public bool HasKey(string key)
         {
-            return GetValue(key) != null;
+            throw new System.NotImplementedException();
         }
 
         public void SetValue(string key, string value)
         {
-            UKeychain.SetPassword(value, "uPreferences", key);
+            throw new System.NotImplementedException();
         }
 
         public bool TryGetValue(string key, out string value)
         {
-            value = GetValue(key);
-            return value == null;
+            throw new System.NotImplementedException();
         }
     }
 }
-#endif
