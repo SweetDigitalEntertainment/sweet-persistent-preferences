@@ -1,11 +1,13 @@
 using UnityEngine;
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-namespace Sweet.Game.Preferences.Standalone
+namespace Sweet.PersistentPreferences.Standalone
 {
-    public sealed class StandaloneDevicePreferences : IDevicePreferences
+    public sealed class UnityPlayerPreferences : IPersistentPreferences
     {
         private static readonly string _KeyPrefix = "_dp.";
+
+        
         public string GetValue(string key)
         {
             return PlayerPrefs.GetString(_KeyPrefix + key, string.Empty);

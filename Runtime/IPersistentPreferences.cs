@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Sweet.Game.Preferences
+namespace Sweet.PersistentPreferences
 {
-    public interface IDevicePreferences
+    public interface IPersistentPreferences
     {
         bool HasKey(string key);
 
